@@ -10,20 +10,7 @@
 </head>
 <body>
 
-	<div ng-switch="subview">
-		<!--
-			This subview will show while the AngularJS app is loading since it's visible right in 
-			the page. Once the app kicks in, however, the calculated subview will determine the
-			appropriate layout to render.
-		-->
-		<div ng-switch-when="loading" class="l-loading">
-			
-			<p>
-				Loading Application
-			</p>	
-
-		</div>
-
+	<div ng-switch="nextSubAction()">
 		<!-- Core layouts. -->
 		<div ng-switch-when="splash" ng-include=" 'assets/app/views/layouts/splash.htm' "></div>
 		<div ng-switch-when="standard" ng-include=" 'assets/app/views/layouts/standard.htm' "></div>
@@ -35,8 +22,13 @@
 
 	<!-- Load vendor scripts. -->
 	<script type="text/javascript" src="assets/vendor/jquery/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="assets/vendor/angularjs/angular.min.js"></script>
 	<script type="text/javascript" src="assets/vendor/lodash/lodash.min.js"></script>
+
+	<!--<script type="text/javascript" src="assets/vendor/angularjs/angular.min.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-route.min.js"></script>
+
+    <script type="text/javascript" src="assets/vendor/angular-nested-views-0.1.0-snapshot.js"></script>
 
 	<!-- Load AngularJS application module. -->
 	<script type="text/javascript" src="assets/app/main.js"></script>
@@ -57,10 +49,6 @@
 	<script type="text/javascript" src="assets/app/services/category-service.js"></script>
 	<script type="text/javascript" src="assets/app/services/lodash.js"></script>
 	<script type="text/javascript" src="assets/app/services/pet-service.js"></script>
-	<script type="text/javascript" src="assets/app/services/request-context.js"></script>
-	
-	<!-- Load Beans. -->
-	<script type="text/javascript" src="assets/app/beans/render-context.js"></script>
 
 </body>
 </html>
