@@ -18,10 +18,10 @@
 				<li>
 					<a href="#/home">Home</a>
 				</li>
-				<li ng-class="{ on: ( subview == 'pets' ) }">
+				<li ng-class="{ on: ( currentAction().indexOf('standard.pets') == 0 ) }">
 					<a href="#/pets">Pets</a>
 				</li>
-				<li ng-class="{ on: ( subview == 'contact' ) }">
+				<li ng-class="{ on: ( currentAction() == 'standard.contact' ) }">
 					<a href="#/contact">Contact</a>
 				</li>
 			</ul>
@@ -31,7 +31,7 @@
 
 
 		<!-- Include Body Content. -->
-		<div ng-switch="subview" class="l-body">
+		<div ng-switch="nextSubAction()" class="l-body">
 			<div ng-switch-when="contact" ng-include=" 'assets/app/views/contact/index.htm' "></div>
 			<div ng-switch-when="home" ng-include=" 'assets/app/views/home/index.htm' "></div>
 			<div ng-switch-when="pets" ng-include=" 'assets/app/views/pets/index.htm' "></div>

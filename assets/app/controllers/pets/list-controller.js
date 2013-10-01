@@ -4,7 +4,7 @@
 
 	app.controller(
 		"pets.ListController",
-		function( $scope, $location, $q, requestContext, categoryService, petService, _ ) {
+		function( $scope, $location, $q, $routeParams, categoryService, petService, _ ) {
 
 
 			// --- Define Controller Methods. ------------------- //
@@ -61,15 +61,14 @@
 			// --- Define Controller Variables. ----------------- //
 
 
-			// Get the render context local to this controller (and relevant params).
-			var renderContext = requestContext.getRenderContext( "standard.pets.list", "categoryID" );
 
-			
+
+
 			// --- Define Scope Variables. ---------------------- //
 
 
 			// Get the ID of the category.
-			$scope.categoryID = requestContext.getParam( "categoryID" );
+			$scope.categoryID = $routeParams[ "categoryID" ];
 
 			// I flag that data is being loaded.
 			$scope.isLoading = true;
@@ -78,40 +77,11 @@
 			$scope.category = null;
 			$scope.pets = null;
 
-			// The subview indicates which view is going to be rendered on the page.
-			$scope.subview = renderContext.getNextSection();
-
 
 			// --- Bind To Scope Events. ------------------------ //
 
 
-			// I handle changes to the request context.
-			$scope.$on(
-				"requestContextChanged",
-				function() {
 
-					// Make sure this change is relevant to this controller.
-					if ( ! renderContext.isChangeRelevant() ) {
-
-						return;
-
-					}
-
-					// Get the relevant route IDs.
-					$scope.categoryID = requestContext.getParam( "categoryID" );
-
-					// Update the view that is being rendered.
-					$scope.subview = renderContext.getNextSection();
-
-					// If the relevant IDs have changed, refresh the view.
-					if ( requestContext.hasParamChanged( "categoryID" ) ) {
-
-						loadRemoteData();
-
-					}
-
-				}
-			);
 
 
 			// --- Initialize. ---------------------------------- //

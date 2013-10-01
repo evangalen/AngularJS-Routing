@@ -49,13 +49,13 @@
 		</ul>
 
 		<div class="m-tabs">
-			<a href="#/pets/{{ category.id }}/{{ pet.id }}" ng-class="{ on: ( subview == 'background' ) }">Background</a>
-			<a href="#/pets/{{ category.id }}/{{ pet.id }}/diet" ng-class="{ on: ( subview == 'diet' ) }">Diet</a>
-			<a href="#/pets/{{ category.id }}/{{ pet.id }}/medical-history" ng-class="{ on: ( subview == 'medicalHistory' ) }">Medical History</a>
+			<a href="#/pets/{{ category.id }}/{{ pet.id }}" ng-class="{ on: ( currentAction() == 'standard.pets.detail.background' ) }">Background</a>
+			<a href="#/pets/{{ category.id }}/{{ pet.id }}/diet" ng-class="{ on: ( currentAction() == 'standard.pets.detail.diet' ) }">Diet</a>
+			<a href="#/pets/{{ category.id }}/{{ pet.id }}/medical-history" ng-class="{ on: ( currentAction() == 'standard.pets.detail.medicalHistory' ) }">Medical History</a>
 		</div>
 
 		<!-- Include View Content. -->
-		<div ng-switch="subview" class="m-tab-pane">
+		<div ng-switch="nextSubAction()" class="m-tab-pane">
 			<div ng-switch-when="background" ng-include=" 'assets/app/views/pets/detail/background.htm' "></div>
 			<div ng-switch-when="diet" ng-include=" 'assets/app/views/pets/detail/diet.htm' "></div>
 			<div ng-switch-when="medicalHistory" ng-include=" 'assets/app/views/pets/detail/medical-history.htm' "></div>

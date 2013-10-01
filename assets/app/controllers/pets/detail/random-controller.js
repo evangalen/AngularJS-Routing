@@ -4,7 +4,7 @@
 
 	app.controller(
 		"pets.detail.RandomController",
-		function( $scope, requestContext, petService, _ ) {
+		function( $scope, $routeParams, petService, _ ) {
 
 
 			// --- Define Controller Methods. ------------------- //
@@ -52,16 +52,15 @@
 			// --- Define Controller Variables. ----------------- //
 
 
-			// Get the render context local to this controller (and relevant params).
-			var renderContext = requestContext.getRenderContext( "standard.pets.detail", [ "categoryID", "petID" ] );
 
-			
+
+
 			// --- Define Scope Variables. ---------------------- //
 
 
 			// Get the relevant route IDs.
-			$scope.categoryID = requestContext.getParam( "categoryID" );
-			$scope.petID = requestContext.getParamAsInt( "petID" );
+            $scope.categoryID = $routeParams[ "categoryID" ];
+            $scope.petID = Number($routeParams[ "petID" ]);
 
 			// I flag that data is being loaded.
 			$scope.isLoading = true;
@@ -73,31 +72,7 @@
 			// --- Bind To Scope Events. ------------------------ //
 
 
-			// I handle changes to the request context.
-			$scope.$on(
-				"requestContextChanged",
-				function() {
 
-					// Make sure this change is relevant to this controller.
-					if ( ! renderContext.isChangeRelevant() ) {
-
-						return;
-
-					}
-
-					// Get the relevant route IDs.
-					$scope.categoryID = requestContext.getParam( "categoryID" );
-					$scope.petID = requestContext.getParamAsInt( "petID" );
-
-					// If the relevant ID has changed, refresh the view.
-					if ( requestContext.haveParamsChanged( [ "categoryID", "petID" ] ) ) {
-
-						loadRemoteData();
-
-					}
-
-				}
-			);
 
 
 			// --- Initialize. ---------------------------------- //
