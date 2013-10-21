@@ -1,0 +1,14 @@
+{
+  "name": "angular-nested-views",
+  "homepage": "https://github.com/evangalen/bower-angular-nested-views",
+  "version": "0.1.0-snapshot",
+  "_release": "0.1.0-snapshot",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0-snapshot",
+    "commit": "27baa08402a97cb23e57556bbe91761de8d94562"
+  },
+  "_source": "https://github.com/evangalen/bower-angular-nested-views.git",
+  "_target": "0.1.0-snapshot",
+  "_originalSource": "https://github.com/evangalen/bower-angular-nested-views.git"
+}
